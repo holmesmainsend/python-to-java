@@ -19,12 +19,16 @@ public class DFS {
     }
     
     public static void dfs(LinkedList<Integer>[] graph, boolean[] visited, int current_node) {
-
+        visited[current_node] = true;
+        System.out.println(current_node);
+        int val = 0;
+        for(int i = 0; i < graph[current_node].size(); i++) {
+            val = graph[current_node].get(i);
+            if(visited[val] == false) {
+                dfs(graph, visited, val);
+            }
+        }
     }
-    
-    
-    
-    
     
     
     public static void main(String[] args) {
