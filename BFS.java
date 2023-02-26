@@ -17,7 +17,27 @@ public class BFS {
 
         return graph;
     }
-    
+
+    public static void bfs(LinkedList<Integer>[] graph, boolean[] visited) {
+        Queue q = new Queue();
+        q.enqueue(0);
+        visited[0] = true;
+
+        while(!q.isEmpty()) {
+            int current_node = q.front();
+            System.out.println(current_node);
+            q.dequeue();
+            int val;
+            for(int i = 0; i < graph[current_node].size(); i++) {
+                val = graph[current_node].get(i);
+                if(visited[val] == false) {
+                    q.enqueue(val);
+                    visited[val] = true;
+                }
+            }
+        }
+    }
+
     public static void main(String[] args) {
         int n = 5;
         int[][] edges = {{0, 1}, {0, 2}, {0, 4}, {1, 2}, {1, 3}, {2, 3}};
